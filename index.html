@@ -31,19 +31,19 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container main" ng-controller="TodosController as todosCtrl">
-		<h3>You have {{todosCtrl.leftToDo()}} todos left to do</h3>
+	<div class="container main" ng-controller="TodosController">
+		<h3>You have {{leftToDo()}} todos left to do</h3>
 		
-		<form class="form-inline" id='add-todo' ng-submit="todosCtrl.add()">
-			<label class="sr-only" for="todosCtrl.newTodo.description">Description</label>
-			<input class="form-control" type="text" placeholder="What to do..." ng-model="todosCtrl.newTodo.description" />
-			<label class="sr-only" for="todosCtrl.newTodo.image">Image</label>
-			<input class="form-control" type="text" placeholder="Here's an image (url)..." ng-model="todosCtrl.newTodo.image" />
-			<label class="sr-only" for="todosCtrl.newTodo">Submit</label>
+		<form class="form-inline" id='add-todo' ng-submit="add()">
+			<label class="sr-only" for="newTodo.description">Description</label>
+			<input class="form-control" type="text" placeholder="What to do..." ng-model="newTodo.description" />
+			<label class="sr-only" for="newTodo.image">Image</label>
+			<input class="form-control" type="text" placeholder="Here's an image (url)..." ng-model="newTodo.image" />
+			<label class="sr-only" for="newTodo">Submit</label>
 			<input class="btn btn-default" type="submit"/>
 		</form>
 		
-		<div ng-repeat="todo in todosCtrl.all">
+		<div ng-repeat="todo in all">
 			<input type="checkbox" ng-model="todo.completed" /><span ng-class="{strike:todo.completed}">{{todo.description}} </span>
 			<img ng-src="{{todo.image}}" class="todo-image"/>
 		</div>

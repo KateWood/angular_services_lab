@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="todosApp">
+<head>
+	<title>What To Do? What To Do!</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/todosController.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">
+					<img class="brand-fit" alt="check mark" src="https://pixabay.com/static/uploads/photo/2014/04/02/10/19/check-303494_960_720.png">
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				<li><a href="#">What To Do? What To Do!</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container main" ng-controller="TodosController as todosCtrl">
+		<h3>You have {{todosCtrl.leftToDo()}} todos left to do</h3>
+		
+		<form class="form-inline" id='add-todo' ng-submit="todosCtrl.add()">
+			<label class="sr-only" for="todosCtrl.newTodo.description">Description</label>
+			<input class="form-control" type="text" placeholder="What to do..." ng-model="todosCtrl.newTodo.description" />
+			<label class="sr-only" for="todosCtrl.newTodo.image">Image</label>
+			<input class="form-control" type="text" placeholder="Here's an image (url)..." ng-model="todosCtrl.newTodo.image" />
+			<label class="sr-only" for="todosCtrl.newTodo">Submit</label>
+			<input class="btn btn-default" type="submit"/>
+		</form>
+		
+		<div ng-repeat="todo in todosCtrl.all">
+			<input type="checkbox" ng-model="todo.completed" /><span ng-class="{strike:todo.completed}">{{todo.description}} </span>
+			<img ng-src="{{todo.image}}" class="todo-image"/>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
